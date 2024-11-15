@@ -23,5 +23,6 @@ jobs:
         role-duration-seconds: 900
         disable-retry: true
     - run: |
-        aws sts get-caller-identity
+        npm ci
+        npm run cdk synth
 
