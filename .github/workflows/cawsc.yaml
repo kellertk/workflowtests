@@ -21,6 +21,7 @@ jobs:
         role-session-name: helloandwelcome@tomanomanom.com
         output-credentials: true
         role-duration-seconds: 900
+        disable-retry: true
     - run: |
         aws sts get-caller-identity
 
