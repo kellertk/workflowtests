@@ -23,8 +23,7 @@ jobs:
         role-duration-seconds: 900
         disable-retry: true
     - run: |
-        aws sts get-caller-identity
-        aws configure get x_security_token_expires
+        aws sts get-caller-identity --debug
         npm ci
         npm run cdk synth
 
