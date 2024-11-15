@@ -1,0 +1,26 @@
+name: execme
+on:
+  workflow_dispatch:
+
+jobs:
+  execme:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: read
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with: 
+        node-version: '18.18.0'
+    - uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-region: 'us-east-1'
+        role-to-assume: 'arn:aws:iam::123456789012:role/role-name'
+        role-session-name: helloandwelcome@tomanomanom.com
+        output-credentials: true
+        role-duration-seconds: 900
+    - run: |
+        aws sts get-caller-identity
+
